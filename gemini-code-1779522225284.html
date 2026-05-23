@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bestie! 🎈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-blue: #e0f7fa;
+            --main-teal: #26a69a;
+            --accent-orange: #ff9800;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+        body { background-color: #b2ebf2; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
+
+        .phone-wrapper { width: 100%; max-width: 410px; background: #ffffff; border-radius: 32px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden; min-height: 680px; display: flex; flex-direction: column; }
+
+        .screen { display: none; width: 100%; flex: 1; flex-direction: column; align-items: center; justify-content: center; padding: 25px; text-align: center; }
+        .screen.active { display: flex; }
+
+        h2 { font-family: 'Fredoka One', cursive; color: var(--main-teal); margin-bottom: 12px; font-size: 1.6rem; }
+        .btn-action { background: var(--main-teal); color: white; border: none; padding: 14px 35px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; margin-top: 15px; width: 85%; }
+
+        /* Chat */
+        .chat-container { width: 100%; display: flex; flex-direction: column; gap: 15px; background: #f4f4f4; padding: 25px 15px; flex: 1; justify-content: flex-end; }
+        .chat-bubble { max-width: 75%; padding: 12px 16px; border-radius: 20px; font-size: 0.95rem; }
+        .chat-incoming { background: #e0e0e0; align-self: flex-start; }
+        .chat-outgoing { background: var(--main-teal); color: white; align-self: flex-end; }
+        .qr-card { background: white; padding: 15px; border-radius: 16px; margin-top: 8px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* Keypad */
+        .keypad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 90%; margin-top: 20px; }
+        .key { background: #f0f0f0; padding: 15px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="phone-wrapper">
+    <div id="screen-chat" class="screen active">
+        <div class="chat-container">
+            <div class="chat-bubble chat-incoming">Happy birthday!! Where is my treat today? 🎂</div>
+            <div class="chat-bubble chat-outgoing">I've got something better for you, Bestie! 🎈</div>
+            <div class="qr-card" onclick="nextScreen('screen-age')">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bestie" width="100">
+                <p>Tap to Open!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-age" class="screen">
+        <h2>Happy Birthday, Bestie! 🎉</h2>
+        <p>Another year of being the chaotic duo we are. Let's make this year even better!</p>
+        <button class="btn-action" onclick="nextScreen('screen-dashboard')">Let's Celebrate!</button>
+    </div>
+
+    <div id="screen-dashboard" class="screen">
+        <h2>What's the plan?</h2>
+        <div style="display:grid; gap: 15px; width: 100%;">
+            <button class="btn-action" onclick="alert('You are the best friend ever!')">Friendship Message 💌</button>
+            <button class="btn-action" onclick="alert('Pizza, movies, and late night chaos!')">Birthday Plans 🍕</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nextScreen(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+</script>
+</body>
+</html>
